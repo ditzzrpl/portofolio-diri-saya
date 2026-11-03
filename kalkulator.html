@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Ramadhan | Kalkulator Nilai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/kalkulator.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <h1>Aditya Ramadhan</h1>
+      <nav class="menu-laptop">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="proyek.html">Proyek</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+          <li><a href="kalkulator.html">Kalkulator</a></li>
+        </ul>
+      </nav>
+      <!-- Tantangan: menu ponsel yang bisa dibuka-tutup -->
+      <details class="menu-ponsel">
+        <summary>Menu</summary>
+        <nav>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="proyek.html">Proyek</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+            <li><a href="kalkulator.html">Kalkulator</a></li>
+          </ul>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="kartu">
+        <h2>Kalkulator Nilai</h2>
+        <p>Masukkan nilai tugas, UTS, dan UAS, lalu tekan tombol "Hitung"</p>
+
+        <form id="kalkulator-form">
+          <p>
+            <label for="tugas">Nilai Tugas</label><br>
+            <input type="number" id="tugas" placeholder="Contoh: 85" required>
+          </p>
+          <p>
+            <label for="uts">Nilai UTS</label><br>
+            <input type="number" id="uts" placeholder="Contoh: 80" required>
+          </p>
+          <p>
+            <label for="uas">Nilai UAS</label><br>
+            <input type="number" id="uas" placeholder="Contoh: 90" required>
+          </p>
+          <button id="hitung" type="button">Hitung</button>
+          <p id="hasil">Hasil akan muncul di sini</p>
+    </form>
+        </section>
+      <section class="kartu">
+        <h2>Temukan Saya di</h2>
+        <ul>
+          <li>GitHub: <a href="https://github.com/ditzzrpl" target="_blank">Profil GitHub saya</a></li>
+          <li>Website: <a href="https://porotfolio-aditya.vercel.app/">portofolio-aditya.vercel.app</a></li>
+          <li>Email: <a href="mailto:adityapplg1@gmail.com">adityapplg1@gmail.com</a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Kontak: <a href="mailto:adityapplg1@gmail.com">adityaplg1@gmail.com</a> |
+      <a href="https://github.com/ditzzrpl" target="_blank">GitHub</a> |
+      <a href="https://www.youtube.com/@AR_ditzz" target="_blank">YouTube</a></p>
+    <p>&copy; 2026 Aditya Ramadhan. Dibuat di Kelas Industri UBIG.</p>
+  </footer>
+</body>
+</html>
