@@ -313,6 +313,19 @@ footer a {
   font-weight: 600;
 }
 
+.tombol-filter {
+  background-color: var(--warna-kartu);
+  color: var(--warna-teks);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.tombol-filter.aktif {
+  background: var(--warna-aksen);
+  color: var(--warna-kartu);
+}
+
 /* 11. Tema gelap: isi variabel diganti saat body memilki class gelap */
 body.gelap {
   --warna-tuama: #0B1526;

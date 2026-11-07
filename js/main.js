@@ -94,7 +94,7 @@ const proyek = [
 const daftarProyek = document.querySelector("#daftar-proyek");
 const jumlahProyek = document.querySelector("#jumlah-proyek");
 
-function butaKartu(item) {
+function buatKartu(item) {
     return `
     <article class="kartu">
       <span class="label">${item.kategori}</span>
@@ -105,7 +105,7 @@ function butaKartu(item) {
 }
 
 function tampilkanProyek(daftar) {
-    const semuaKartu = daftar.map((item) => butaKartu(item));
+    const semuaKartu = daftar.map((item) => buatKartu(item));
     daftarProyek.innerHTML = semuaKartu.join("");
     jumlahProyek.textContent = `Menampilkan ${daftar.length} dari ${proyek.length} proyek`;
 }
@@ -115,14 +115,29 @@ function pasangFilter(idTombol, kategori) {
     tombol.addEventListener("click", () => {
       if (kategori === "Semua") {
         tampilkanProyek(proyek);
-      } else {
+      } else if (kategori === "HTML") {
         tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
-      }
+      } else if (kategori === "CSS") {
+        tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
+      } else
+        tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
     });
 }
+
 
 if (daftarProyek) {
     tampilkanProyek(proyek);
     pasangFilter("#filter-semua", "Semua");
+    pasangFilter("#filter-html", "HTML");
+    pasangFilter("#filter-css", "CSS");
     pasangFilter("#filter-javascript", "JavaScript");
 }
+
+const tombol = document.querySelectorAll(".tombol-filter");
+
+tombol.forEach((btn) => {
+  btn.addEventListener("click", () => {
+        tombol.forEach((b) => b.classList.remove("aktif"));
+    btn.classList.add("aktif");
+    });
+});
