@@ -328,7 +328,7 @@ footer a {
 
 /* 11. Tema gelap: isi variabel diganti saat body memilki class gelap */
 body.gelap {
-  --warna-tuama: #0B1526;
+  --warna-utama: #0B1526;
   --warna-judul: #A8DADC;
   --warna-tautan: #FF8A8A;
   --warna-latar: #121A24;

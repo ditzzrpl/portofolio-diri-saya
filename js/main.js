@@ -35,6 +35,16 @@ tombolTema.addEventListener('click', () => {
     }
 });
 
+if (localStorage.getItem("tema") == "gelap") {
+    document.body.classList.add("gelap");
+    tombolTema.textContent = "Mode Terang";
+}
+
+tombolTema.addEventListener("click", () => {
+    const gelap = document.body.classList.contains("gelap");
+    localStorage.setItem("tema", gelap ? "gelap" : "terang");
+});
+
 // 3. Penghitung karakter pesan (halaman Kontak)
 const kotakPesan = document.querySelector("#pesan");
 const hitungKarakter = document.querySelector("#hitung-karakter");
