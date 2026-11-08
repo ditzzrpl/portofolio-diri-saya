@@ -2,7 +2,7 @@ document.getElementById("tugas");
 document.getElementById("uts");
 document.getElementById("uas");
 
-const tombol = document.querySelector("#hitung");
+const tombolHitung = document.querySelector("#hitung");
 const hasil = document.querySelector("#hasil");
 
 function hitungRata(tugas, uts, uas) {
@@ -20,7 +20,7 @@ function predikat(nilai) {
         return "D";
     }
 }
-tombol.addEventListener("click", () => {
+tombolHitung.addEventListener("click", () => {
     const tugas = Number(document.getElementById("tugas").value);
     const uts = Number(document.getElementById("uts").value);
     const uas = Number(document.getElementById("uas").value);
