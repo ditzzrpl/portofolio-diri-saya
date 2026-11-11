@@ -2,24 +2,31 @@
 // Dipasang di ketiga halaman dengan defer
 
 // 1. Daftar keahlian (halama Beranda)
-const skills = [
-    { nama: "HTML", level: "Menengah" },
-    { nama: "CSS", level: "Menengah" },
-    { nama: "Git dan GitHub", level: "Dasar" },
-    { nama: "Desain poster dengan Canva", level: "Mahir" },
-];
-skills.push({ nama: "JavaScript", level: "Dasar" });
-
 const daftarSkill = document.querySelector("#daftar-skill");
 const jumlahSkill = document.querySelector("#jumlah-skill");
 
-if (daftarSkill) {
-    skills.forEach((skill) => {
+async function muatKeahlian() {
+    try {
+        const response = await fetch("data/keahlian.json");
+        if (!response.ok) {
+            throw new Error(`Status ${response.status}`);
+        }
+        const skills = await response.json();
+
+        skills.forEach((skill) => {
         const item = document.createElement("li");
         item.textContent = `${skill.nama} (${skill.level})`;
         daftarSkill.appendChild(item);
-    });
-    jumlahSkill.textContent = `Ada ${skills.length} keahlian yang sedang saya kembangkan.`;
+        });
+        jumlahSkill.textContent = `Ada ${skills.length} keahlian yang sedang saya kembangkan.`;
+    }   catch (error) {
+        jumlahSkill.textContent = "Daftar keahlian gagal dimuat.";
+        console.error(error);
+    }
+}
+
+if (daftarSkill) {
+    muatKeahlian();
 }
 
 // 2. Tema gelap (semua halaman)
@@ -123,14 +130,14 @@ function tampilkanProyek(daftar) {
 function pasangFilter(idTombol, kategori) {
     const tombol = document.querySelector(idTombol);
     tombol.addEventListener("click", () => {
-      if (kategori === "Semua") {
-        tampilkanProyek(proyek);
-      } else if (kategori === "HTML") {
-        tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
-      } else if (kategori === "CSS") {
-        tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
-      } else
-        tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
+        if (kategori === "Semua") {
+            tampilkanProyek(proyek);
+        } else if (kategori === "HTML") {
+            tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
+        } else if (kategori === "CSS") {
+            tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
+        } else
+            tampilkanProyek(proyek.filter((item) => item.kategori === kategori));
     });
 }
 
@@ -146,8 +153,44 @@ if (daftarProyek) {
 const tombol = document.querySelectorAll(".tombol-filter");
 
 tombol.forEach((btn) => {
-  btn.addEventListener("click", () => {
+    btn.addEventListener("click", () => {
         tombol.forEach((b) => b.classList.remove("aktif"));
-    btn.classList.add("aktif");
+        btn.classList.add("aktif");
     });
 });
+
+// 5. Repositori GitHub terbaru (halaman proyek)
+const username = "ditzzrpl";
+const alamatRepo = `https://api.github.com/users/${username}/repos`;
+const pilihan = "?sort=updated&per_page=6";
+
+const daftarRepo = document.querySelector("#daftar-repo");
+const statusRepo = document.querySelector("#status-repo");
+
+async function ambilRepo() {
+    statusRepo.textContent = "Memuat...";
+    try {
+        const response = await fetch(alamatRepo + pilihan);
+        if (!response.ok) {
+            throw new Error(`Status ${response.status}`);
+        }
+        const repos = await response.json();
+        repos.forEach((repo) => {
+            const item = document.createElement("li");
+            const tautan = document.createElement("a");
+            tautan.href = repo.html_url;
+            tautan.target = "_blank";
+            tautan.textContent = repo.name;
+            item.appendChild(tautan);
+            daftarRepo.appendChild(item);
+        });
+        statusRepo.textContent = `${repos.length} repositori yang
+terakhir diperbarui:`;
+    } catch (error) {
+        statusRepo.textContent = "Maaf, daftar repositori gagal dimuat. Periksa username atau coba lagi nanti.";
+        console.error(error);
+    }
+}
+if (daftarRepo) {
+    ambilRepo();
+}
