@@ -336,3 +336,11 @@ body.gelap {
   --warna-kartu: #1C2836;
   --warna-garis: #34465A;
 }
+
+.tombol-kedua {
+  background-color: var(--warna-utama);
+}
+
+.hampir-penuh {
+  color: var(--warna-aksen);
+}

@@ -55,10 +55,14 @@ tombolTema.addEventListener("click", () => {
 // 3. Penghitung karakter pesan (halaman Kontak)
 const kotakPesan = document.querySelector("#pesan");
 const hitungKarakter = document.querySelector("#hitung-karakter");
+const hampirPenuh = document.querySelector("#hitung-karakter");
 
 if (kotakPesan) {
     kotakPesan.addEventListener("input", () => {
-        hitungKarakter.textContent = `${kotakPesan.value.length}/300 karakter`;
+        hitungKarakter.textContent = `${kotakPesan.value.length}/300 karakter`
+    { if (`${kotakPesan.value.length}` >= 250) {
+        document.body.classList.add(".hampir-penuh");
+    }};
     });
 }
 
