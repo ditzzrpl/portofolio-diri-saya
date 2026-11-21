@@ -17,9 +17,9 @@ img {
 /* 2. Dasar halaman: warna dan huruf */
 :root {
   --warna-utama: #1D3557;
-  --warna-judul: #1D3667;
-  --warna-aksen: #E63946;
-  --warna-tautan: #E63946;
+  --warna-judul: #1D3557;
+  --warna-aksen: #C1121F;
+  --warna-tautan: #C1121F;
   --warna-latar: #F1FAEE;
   --warna-teks: #333333;
   --warna-kartu: #FFFFFF;
@@ -165,6 +165,7 @@ main {
 .daftar-kartu .kartu {
   flex: 1 1 280px;
   margin-bottom: 0;
+  min-height: 30rem;
 }
 
 article img {

@@ -55,15 +55,28 @@ tombolTema.addEventListener("click", () => {
 // 3. Penghitung karakter pesan (halaman Kontak)
 const kotakPesan = document.querySelector("#pesan");
 const hitungKarakter = document.querySelector("#hitung-karakter");
-const hampirPenuh = document.querySelector("#hitung-karakter");
+const tombolKosongkan = document.querySelector("#tombol-kosongkan");
 
 if (kotakPesan) {
     kotakPesan.addEventListener("input", () => {
-        hitungKarakter.textContent = `${kotakPesan.value.length}/300 karakter`
-    { if (`${kotakPesan.value.length}` >= 250) {
-        document.body.classList.add(".hampir-penuh");
-    }};
-    });
+        hitungKarakter.textContent = `${kotakPesan.value.length}/300 karakter`; 
+     if (kotakPesan.value.length >= 250) {
+        hitungKarakter.classList.add("hampir-penuh");
+    } else {
+        hitungKarakter.classList.remove("hampir-penuh");
+    }
+});
+
+if (kotakPesan.value.length >= 250) {
+    document.body.classList.add("hampir-penuh");
+} else {
+    document.body.classList.remove("hampir-penuh");
+}
+
+tombolKosongkan.addEventListener('click', () => {
+    kotakPesan.value = "";
+});
+
 }
 
 // 4. Daftar proyek dan filter (halaman Proyek)
@@ -92,7 +105,7 @@ function buatKartu(item) {
     <article class="kartu">
       <span class="label">${item.kategori}</span>
       <h3>${item.judul}</h3>
-      <img src="${item.gambar}" alt="${item.alt}" width="280">
+      <img src="${item.gambar}" alt="${item.alt}" width="280" height="184">
       <p>${item.deskripsi}</p>
     </article>`;
 }
